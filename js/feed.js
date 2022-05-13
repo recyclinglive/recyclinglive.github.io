@@ -6,9 +6,9 @@ firebase.database().ref("Restaurant").once("value", function (snapshots) {
                 var val = data.val();
                 var donationStatus = "";
                 
-                if(sessionStorage.getItem("role")==="NGO"){
+                if(sessionStorage.getItem("role")=="NGO"){
                     if(val.NGOStatus == "Pending"){
-                        donationStatus = '<a href="feed2.html?token='+data.key+'"><button class="buttonact btn btn-warning" style="background-color:orange;color:white;">Accept Donation</button></a>';
+                        donationStatus = '<a href="feed2.html?token='+data.key+'&&n='+childSnaShot.val().mobilenumber+'"><button class="buttonact btn btn-warning" style="background-color:orange;color:white;">Accept Donation</button></a>';
                     }else if(val.NGOStatus == "Accept"){
                         donationStatus = '<button class="buttonact btn btn-success" style="background-color:green;color:white;">Food Accepted &#10003;</button></a>';
                     }else{
@@ -45,11 +45,12 @@ firebase.database().ref("Restaurant").once("value", function (snapshots) {
                   content += '</table>';
                   content += '</div>';
                   content += '<table>';
-                  content += '<tr> <td class="fw-bold">Remark</td> </tr> <tr> <td>' + val.mark + ' hours</td> </tr>';
+                  content += '<tr> <td class="fw-bold">Remark</td> </tr> <tr> <td>' + val.mark + '</td> </tr>';
                   content += '</table>';
                   content += '</div></div>';
-                  content += '<div class="itm col-lg-2 d-flex flex-column justify-content-around"> <div> <table> <tr> <td class="fw-bold">Restaurant Number</td> </tr> <tr> <td>' + childSnaShot.val().mobilenumber + '</td> </tr> </table> </div> </div> <div class="itm col-lg-3 d-flex flex-column justify-content-around status-itm"> <div> <table class="w-100"> <tr> '+donationStatus+' </tr> </table> </div></div>';
+                  content += '<div class="itm col-lg-2 d-flex flex-column justify-content-around"> <div> <table> <tr> <td class="fw-bold">Restaurant Number</td> </tr> <tr> <td>' + childSnaShot.val().mobilenumber + '</td> </tr><tr><td class="fw-bold">Accepted NGO No '+val.DeliveryContactN+'</td><br></tr> </table> </div> </div> <div class="itm col-lg-3 d-flex flex-column justify-content-around status-itm"> <div> <table class="w-100"> <tr> '+donationStatus+' </tr> </table> </div></div>';
                   content += '<hr class="mt-4">';
+                  content += '</div>';
             });
             $('#ex-table').append(content);
         });

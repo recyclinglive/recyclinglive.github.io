@@ -54,7 +54,11 @@
                 <div id="uStatus" class='menu-list-item btn-group'></div>
                 <script>
                     if(sessionStorage.getItem("username")){
+                      if(sessionStorage.getItem("role")=="NGO"){
                         document.getElementById("uStatus").innerHTML = '<div class="rd-navbar-aside"><button class="rd-navbar-btn btn btn-secondary"><a href="NGO.html" style="color:white;">My Profile</a></button></div><div class="px-4 rd-navbar-aside"><button class="rd-navbar-btn btn btn-primary"><a href="logout.html" style="color:white;">Logout</a></button></div>';
+                      }else{
+                        document.getElementById("uStatus").innerHTML = '<div class="rd-navbar-aside"><button class="rd-navbar-btn btn btn-secondary"><a href="RestaurantCaterer.html" style="color:white;">My Profile</a></button></div><div class="px-4 rd-navbar-aside"><button class="rd-navbar-btn btn btn-primary"><a href="logout.html" style="color:white;">Logout</a></button></div>';
+                      }
                     }else{
                         document.getElementById("uStatus").innerHTML = '<div class="rd-navbar-aside rd-navbar-collapse"><button class="rd-navbar-btn btn btn-secondary" data-bs-toggle="modal" data-bs-target="#modal">Login</button></div>';
                     }
@@ -127,7 +131,6 @@
               <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <!-- <form class="rd-mailform text-start" data-form-output="form-output-global" data-form-type="contact" method="post" action=""> -->
                 <div class="row row-20">
                   <div class="col-sm-12">
                     <div class="form-wrap">
@@ -153,7 +156,6 @@
                 <div class="form-button btn-group-1">
                   <button class="btn btn-sm btn-primary" type="submit" id="signin">Login</button><small>Not registered?</small><a class="btn btn-sm btn-secondary" href="registration.html"></span><span>Register</span></a>
                 </div>
-              <!-- </form> -->
             </div>
           </div>
         </div>
